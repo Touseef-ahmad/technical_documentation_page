@@ -1,0 +1,52 @@
+@media only screen and (max-width: 600px) {
+    #main {
+        flex-direction: column;
+    }
+    #main-doc {
+        flex: 1;
+        max-width: 100%;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: monospace;
+    font-weight: normal;
+}
+header {
+    font-weight: bolder;
+    font-size: larger;
+}
+pre {
+
+    background-color: #e7e7e7;
+}
+#main {
+    display: flex;
+}
+
+#navbar {
+    padding: 20px;
+    align-items: center;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #e7e7e7;
+}
+.nav-link {
+    background-color: #e7e7e7;
+    margin: 10px;
+    text-decoration: none;
+    color: black;
+}
+.nav-link:hover {
+    background-color: silver;
+}
+#main-doc {
+    padding: 30px;
+    flex: 3;
+    max-width: 75%;
+}
