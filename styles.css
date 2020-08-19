@@ -1,13 +1,6 @@
-@media only screen and (max-width: 600px) {
-    #main {
-        flex-direction: column;
-    }
-    #main-doc {
-        flex: 1;
-        max-width: 100%;
-    }
+html {
+    scroll-behavior: smooth;
 }
-
 * {
     box-sizing: border-box;
 }
@@ -24,18 +17,24 @@ pre {
 
     background-color: #e7e7e7;
 }
-#main {
-    display: flex;
-}
 
 #navbar {
     padding: 20px;
-    align-items: center;
-    flex: 1;
+    width: 25%;
     display: flex;
     flex-direction: column;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100vh;
+    justify-content: center;
     background-color: #e7e7e7;
 }
+pre {
+    overflow: auto;
+    word-wrap: normal;
+    white-space: pre;
+  }
 .nav-link {
     background-color: #e7e7e7;
     margin: 10px;
@@ -46,7 +45,19 @@ pre {
     background-color: silver;
 }
 #main-doc {
-    padding: 30px;
-    flex: 3;
-    max-width: 75%;
+    padding: 30px 30px 30px 30%;
+}
+@media only screen and (max-width: 600px) {
+    #navbar {
+        position: unset;
+        width: 100vw;
+        height: auto;
+    }
+    #main-doc {
+        padding: 30px;
+    }
+    #main {
+        display: flex;
+        flex-direction: column-reverse;
+    }
 }

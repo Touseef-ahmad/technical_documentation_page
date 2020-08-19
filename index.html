@@ -43,24 +43,29 @@
                     syntax offers many rich ways of
                     representing your models – so far, it’s been solving many years’ worth of
                     database-schema problems. Here’s a quick example:</p>
-                <pre><code>
-                    from django.db import models
-    
-                    class Reporter(models.Model):
-                        full_name = models.CharField(max_length=70)
-                    
-                        def __str__(self):
-                            return self.full_name
-                    
-                    class Article(models.Model):
-                        pub_date = models.DateField()
-                        headline = models.CharField(max_length=200)
-                        content = models.TextField()
-                        reporter = models.ForeignKey(Reporter, on_delete=models.CASCADE)
-                    
-                        def __str__(self):
-                            return self.headline
-                </code></pre>
+
+                <!-- HTML generated using hilite.me -->
+                <div style="background: #ffffff; overflow:auto;width:auto;padding:.2em .6em;">
+                    <pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">django.db</span> <span style="color: #008800; font-weight: bold">import</span> models
+
+    <span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">Reporter</span>(models<span style="color: #333333">.</span>Model):
+    full_name <span style="color: #333333">=</span> models<span style="color: #333333">.</span>CharField(max_length<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">70</span>)
+
+    <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">__str__</span>(<span style="color: #007020">self</span>):
+        <span style="color: #008800; font-weight: bold">return</span> <span style="color: #007020">self</span><span style="color: #333333">.</span>full_name
+
+<span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">Article</span>(models<span style="color: #333333">.</span>Model):
+    pub_date <span style="color: #333333">=</span> models<span style="color: #333333">.</span>DateField()
+    headline <span style="color: #333333">=</span> models<span style="color: #333333">.</span>CharField(max_length<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">200</span>)
+    content <span style="color: #333333">=</span> models<span style="color: #333333">.</span>TextField()
+    reporter <span style="color: #333333">=</span> models<span style="color: #333333">.</span>ForeignKey(Reporter, on_delete<span style="color: #333333">=</span>models<span style="color: #333333">.</span>CASCADE)
+
+    <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">__str__</span>(<span style="color: #007020">self</span>):
+        <span style="color: #008800; font-weight: bold">return</span> <span style="color: #007020">self</span><span style="color: #333333">.</span>headline
+</pre>
+                </div>
+                <!-- End of HTML generated using hilite.me -->
+
             </section>
             <section id="Design_your_URLs" class="main-section">
                 <header>Design your URLs</header>
@@ -73,17 +78,18 @@
                     it contains a mapping between URL patterns and Python callback functions. URLconfs also serve to
                     decouple URLs from Python code.</p>
                 <p>Here’s what a URLconf might look like for the Reporter/Article example above:</p>
-                <pre><code>
-                    from django.urls import path
-    
-                    from . import views
-                    
-                    urlpatterns = [
-                        path('articles/<int:year>/', views.year_archive),
-                        path('articles/<int:year>/<int:month>/', views.month_archive),
-                        path('articles/<int:year>/<int:month>/<int:pk>/', views.article_detail),
-                    ]
-                </code></pre>
+              <!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">django.urls</span> <span style="color: #008000; font-weight: bold">import</span> path
+
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">.</span> <span style="color: #008000; font-weight: bold">import</span> views
+
+urlpatterns <span style="color: #666666">=</span> [
+    path(<span style="color: #BA2121">&#39;articles/&lt;int:year&gt;/&#39;</span>, views<span style="color: #666666">.</span>year_archive),
+    path(<span style="color: #BA2121">&#39;articles/&lt;int:year&gt;/&lt;int:month&gt;/&#39;</span>, views<span style="color: #666666">.</span>month_archive),
+    path(<span style="color: #BA2121">&#39;articles/&lt;int:year&gt;/&lt;int:month&gt;/&lt;int:pk&gt;/&#39;</span>, views<span style="color: #666666">.</span>article_detail),
+]
+</pre></div>
+
+ <!-- End of HTML generated using hilite.me -->
             </section>
             <section id="Write_your_views" class="main-section">
                 <header>Write your views</header>
@@ -92,27 +98,30 @@
                 <p>Generally, a view retrieves data according to the parameters, loads a template and renders the
                     template
                     with the retrieved data. Here’s an example view for year_archive from above:</p>
-                <pre><code>
-                    from django.shortcuts import render
-    
-                    from .models import Article
-                    
-                    def year_archive(request, year):
-                        a_list = Article.objects.filter(pub_date__year=year)
-                        context = {'year': year, 'article_list': a_list}
-                        return render(request, 'news/year_archive.html', context)
-                </code></pre>
+              <!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">django.shortcuts</span> <span style="color: #008000; font-weight: bold">import</span> render
+
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">.models</span> <span style="color: #008000; font-weight: bold">import</span> Article
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">year_archive</span>(request, year):
+    a_list <span style="color: #666666">=</span> Article<span style="color: #666666">.</span>objects<span style="color: #666666">.</span>filter(pub_date__year<span style="color: #666666">=</span>year)
+    context <span style="color: #666666">=</span> {<span style="color: #BA2121">&#39;year&#39;</span>: year, <span style="color: #BA2121">&#39;article_list&#39;</span>: a_list}
+    <span style="color: #008000; font-weight: bold">return</span> render(request, <span style="color: #BA2121">&#39;news/year_archive.html&#39;</span>, context)
+</pre></div>
+
+<!-- End of HTML generated using hilite.me -->
             </section>
             <section id="Write_your_first_view" class="main-section">
                 <header>Write your first view</header>
                 <p>Let’s write the first view. Open the file polls/views.py and put the following Python code in it:</p>
-                <pre><code>
-                    from django.http import HttpResponse
-    
-    
-                    def index(request):
-                        return HttpResponse("Hello, world. You're at the polls index.")
-                </code></pre>
+                <!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">django.db</span> <span style="color: #008000; font-weight: bold">import</span> models
+
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Article</span>(models<span style="color: #666666">.</span>Model):
+pub_date <span style="color: #666666">=</span> models<span style="color: #666666">.</span>DateField()
+headline <span style="color: #666666">=</span> models<span style="color: #666666">.</span>CharField(max_length<span style="color: #666666">=200</span>)
+content <span style="color: #666666">=</span> models<span style="color: #666666">.</span>TextField()
+reporter <span style="color: #666666">=</span> models<span style="color: #666666">.</span>ForeignKey(Reporter, on_delete<span style="color: #666666">=</span>models<span style="color: #666666">.</span>CASCADE)
+</pre></div>
+ <!-- End of HTML generated using hilite.me -->
                 <ul>
                     <li>The outer <code><span>mysite/</span></code>
                         root directory is a container for your project. Its
